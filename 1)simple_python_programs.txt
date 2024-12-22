@@ -1,0 +1,119 @@
+1)write a python program to calculate bills he spent shopping?
+
+sal=float(input('enter salary:'))
+b1=float(input('enter bill 1:'))
+b2=float(input('enter bill 2:'))
+b3=float(input('enter bill 3:'))
+tot=b1+b2+b3
+print("total spend for shopping",tot)
+per=(tot/sal)*100
+print("total percentage from his salary",per)
+
+..........................................................................................................................................................................................
+
+2).write a python program to calculate GS,HRA,DA with help of basic salary?
+
+basic=float(input("enter basic salary:"))
+
+if basic<10000:
+   HRA=float(0.67*basic)
+   DA=float(0.73*basic)
+elif basic<20000:
+   HRA=float(0.69*basic)
+   DA=float(0.76*basic)
+else:
+   HRA=float(0.73*basic)
+   DA=float(0.89*basic)
+GS=HRA+DA+basic
+print("gross salary",GS)
+
+..........................................................................................................................................................................................
+
+3).write a python code for banking with class and function?
+
+class Bank:
+   balance = 20000
+   def viewOptions(self):
+       print('1. Deposit')
+       print('2. Withdraw')
+       print('3. Balance Enquiry')
+       print('4. Exit')
+   def deposit(self, amount):
+       n=amount%100
+       if 100 <= amount <= 50000 and n==0:
+           self.balance += amount
+           print(f'Deposited: {amount}')
+           print(f'New Balance: {self.balance}')
+       else:
+           print("Invalid deposit amount. Must be between 100 and 50,000. and multiples of 100")
+   def withdraw(self, amount):
+       if 100 <= amount <= self.balance:
+           self.balance -= amount
+           print(f'Withdrawn: {amount}')
+           print(f'New Balance: {self.balance}')
+       else:
+           print("Insufficient balance or invalid amount.")
+   def balanceEnquiry(self):
+       print(f'Current Balance: {self.balance}')
+   def validate(self):
+       count = 0
+       while count < 3:
+           pin = int(input('Enter pin: '))
+           if pin == 1234:
+               self.viewOptions()
+               while True:
+                   try:
+                       choice = int(input('Enter choice (1-4): '))
+                       if choice == 1:
+                           dep = float(input('Enter deposit amount: '))
+                           self.deposit(dep)
+                       elif choice == 2:
+                           withdraw_amount = float(input('Enter withdrawal amount: '))
+                           self.withdraw(withdraw_amount)
+                       elif choice == 3:
+                           self.balanceEnquiry()
+                       elif choice == 4:
+                           print('Exiting...')
+                           break
+                       else:
+                           print('Invalid choice. Please enter a number between 1 and 4.')
+                   except ValueError:
+                       print("Invalid input. Please enter a valid number.")
+               return
+           else:
+               count += 1
+               if count < 3:
+                   print(f'Incorrect pin. You have {3 - count} attempts left.')
+               else:
+                   print('Too many incorrect attempts. Access denied.')
+obj = Bank()
+obj.validate()
+
+
+..........................................................................................................................................................................................
+
+4)write a python code for t calculate student grade?
+
+print("enter project score")
+project=int(input())
+print("enter internal score")
+internal=int(input())
+print("enter external score")
+external=int(input())
+if project>=50 and internal>=50 and external>=50:
+   total=0.7*project+0.10*internal+0.20*external
+   if total>=90:
+       print("A")
+   elif total>80:
+       print("B")
+   else:
+       print("c")
+else:
+   if project<50:
+       print("failed in project and score is:",project)
+   if external<50:
+       print("failed in external and score is:",external)
+   if internal<50:
+       print("failed in internal and score is:",internal)
+
+

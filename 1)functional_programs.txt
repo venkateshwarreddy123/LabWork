@@ -1,0 +1,154 @@
+1).write a python code for password validation?
+
+def password_valid(password):
+   
+    if len(password) < 10 or len(password) > 15:
+        return "Password length should be between 10 and 15 characters"
+    elif password.isdigit() or password.isalpha():
+        return "Use a mix of characters (letters, digits, and/or symbols)"
+    elif not any(Char.isupper() for Char in password):
+        return "Use at least one uppercase letter"
+    elif not any(Char.islower() for Char in password):
+        return "Use at least one lowercase letter"
+    elif not any(Char.isdigit() for Char in password):
+        return "Use at least one digit"
+    elif not any(Char in string.punctuation for Char in password):
+        return "Use at least one special character"
+    elif any(Char.isspace() for Char in password):
+        return "contains white space"
+    if password[-1] == '@' or password[-1] == '.':
+        return "ended with @ or ."
+    else:
+        return "Strong: good password"
+​
+password = input("Enter password: ")
+print(password_valid(password))
+
+.......................................................................................................................................................................................
+
+2)write a python code to calculate total cost of cart items?
+with conditions
+----->if item cost greater than 25000 
+----->add discount 10% if length of items are greater than 5.
+
+def calculate(cart):
+    total = 0
+    for value in cart.values():
+        if value > 25000:
+            total += value
+    if len(cart)>5:
+        for val in cart.values():
+            if val>25000:
+                total*=0.9
+    return total
+cart={'laptop':50000,'headphones':2000,'mouse':35000,'keyword':1500,'monitor':8000,'drive(usb)':1000}
+print(calculate(cart))
+
+..........................................................................................................................................................................................
+
+3)write a python program for factorial of a number?
+
+def factorial(num):
+    if num==0:
+        return 1
+    else:
+        return num*factorial(num-1)
+num=int(input("enter number"))
+res=factorial(num)
+print(f"factorial of {num} is",res)
+
+..........................................................................................................................................................................................
+
+4) write a python program for palindrome?
+
+def polindrome(res):
+    pol=res[::-1]
+    if res==pol:
+        return "given string is polidrome"
+    else:
+        return "given string is not polindrome"
+res=input("enter string")
+print(polindrome(res))
+
+
+..........................................................................................................................................................................................
+
+
+5)some list,dictionary,sets operations....
+
+
+a=[1,2,3]
+b=[4,5,6]
+a.append(b)
+print(a)
+[1, 2, 3, [4, 5, 6]]
+
+a[2]
+3
+a[4]
+​
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+Cell In[15], line 1
+----> 1 a[4]
+
+IndexError: list index out of range
+
+a[3]
+
+[4, 5, 6]
+
+a.remove(1)
+
+print(a)
+[2, 3, [4, 5, 6]]
+
+a.remove(5)
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[19], line 1
+----> 1 a.remove(5)
+
+ValueError: list.remove(x): x not in list
+
+
+a.pop()
+Out[20]:
+[4, 5, 6]
+
+print(a)
+[2, 3]
+
+a=[1,2,3]
+b=[4,5,6]
+a.extend(b)
+print(a)
+[1, 2, 3, 4, 5, 6]
+
+a.pop()
+​
+Out[23]:
+6
+
+d={a:1,b:2}
+print(d)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[25], line 1
+----> 1 d={a:1,b:2}
+      2 print(d)
+
+TypeError: unhashable type: 'list'
+
+
+d={1:"venky",2:"mahi"}
+print(d)
+{1: 'venky', 2: 'mahi'}
+
+d[2]='Ramesh'
+print(d)
+{1: 'venky', 2: 'Ramesh'}
+
+a={}
+print(type(a))
+<class 'dict'>

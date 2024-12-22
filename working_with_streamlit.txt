@@ -1,0 +1,145 @@
+1.banking program with class and functions?
+
+import streamlit as st
+class Bank:
+   balance = 20000
+   def viewOptions(self):
+       st.write('1. Deposit')
+       st.write('2. Withdraw')
+       st.write('3. Balance Enquiry')
+       st.write('4. Exit')
+   def deposit(self, amount):
+       n=amount%100
+       if 100 <= amount <= 50000 and n==0:
+           self.balance += amount
+           st.write(f'Deposited: {amount}')
+           st.write(f'New Balance: {self.balance}')
+       else:
+           st.write("Invalid deposit amount. Must be between 100 and 50,000. and multiples of 100")
+   def withdraw(self, amount):
+       if 100 <= amount <= self.balance:
+           self.balance -= amount
+           st.write(f'Withdrawn: {amount}')
+           st.write(f'New Balance: {self.balance}')
+       else:
+           st.write("Insufficient balance or invalid amount.")
+   def balanceEnquiry(self):
+       st.write(f'Current Balance: {self.balance}')
+   def validate(self):
+       count = 0
+       while count < 3:
+           pin = st.number_input('Enter pin: ',min_value=1233,step=1)
+           if pin == 1234:
+               self.viewOptions()
+               while True:
+                   try:
+                       choice = st.number_input('Enter choice (1-4): ',min_value=0,step=1)
+                       if choice == 1:
+                           dep = st.number_input('Enter deposit amount: ',min_value=0,step=2000)
+                           self.deposit(dep)
+                       elif choice == 2:
+                           withdraw_amount = st.number_input('Enter withdraw amount: ',min_value=0,step=2000)
+                           self.withdraw(withdraw_amount)
+                       elif choice == 3:
+                           self.balanceEnquiry()
+                       elif choice == 4:
+                           st.write('Exiting...')
+                           break
+                       else:
+                           st.write('Invalid choice. Please enter a number between 1 and 4.')
+                   except ValueError:
+                       st.write("Invalid input. Please enter a valid number.")
+               return
+           else:
+               count += 1
+               if count < 3:
+                   st.write(f'Incorrect pin. You have {3 - count} attempts left.')
+               else:
+                   st.write('Too many incorrect attempts. Access denied.')
+obj = Bank()
+obj.validate()
+
+
+........................................................................................................................................................................................
+
+2).write a python program to calculate Gross Calculator?
+
+import streamlit as st
+st.title('Gross Salary Calculator')
+basic_sal=st.number_input('Enter your basic salary:',min_value=0,step=10000)
+
+if st.button('Calculate Gross Salary'):
+   hra=0
+   da=0
+   if basic_sal<10000:
+       hra=0.67*basic_sal
+       da=0.73*basic_sal
+   elif basic_sal<20000:
+       hra=0.73*basic_sal
+       da=0.65*basic_sal
+   else:
+       hra=0.72*basic_sal
+       da=0.64*basic_sal
+   gs=hra+da+basic_sal
+   st.write(gs)
+
+
+........................................................................................................................................................................................
+
+3).write a python program to calculate student grades?
+
+import streamlit as st
+st.title('student grading')
+proj=st.number_input('enter project score',min_value=0,step=30)
+inter=st.number_input('enter internal score',min_value=0,step=3)
+ext=st.number_input('enter external score',min_value=0,step=6)
+grade=proj+inter+ext
+if st.button('grade'):
+       if proj<35:
+           st.write('failed score is',proj)
+       if inter<5:
+           st.write('failed score is',inter)
+       if ext<10:
+           st.write('failed score is',ext)
+
+       else:
+           if grade >= 90:
+               st.success('A grade')
+           elif grade>= 80:
+               st.success("B grade")
+           else:
+               st.success('C grade')
+
+........................................................................................................................................................................................
+
+4).write a python program to check given number is even or odd?
+
+import streamlit as st
+st.title('EVEN OR ODD')
+num1=st.number_input('Enter number',min_value=0,step=1)
+if st.button('Even/Odd'):
+   if num1%2==0:
+       st.success('Even number')
+   else:
+       st.error('Odd number')
+
+
+........................................................................................................................................................................................
+
+
+5).write a python program to calculate bills he spent on shopping?
+
+import streamlit as st
+st.title('Bills')
+
+salary=st.number_input('enter salary of employee:',min_value=0,step=10000)
+b1=st.number_input('enter bill 1',min_value=0,step=2000)
+b2=st.number_input('enter bill 2',min_value=0,step=2000)
+b3=st.number_input('enter bill 3',min_value=0,step=2000)
+st.button('click')
+total=b1+b2+b3
+st.success(total)
+per=(total/salary)*100
+st.success(per)
+
+
